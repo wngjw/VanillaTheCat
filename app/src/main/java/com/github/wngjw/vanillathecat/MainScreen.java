@@ -110,7 +110,9 @@ public class MainScreen extends AppCompatActivity {
         final MediaPlayer[] meowMP = {
                 MediaPlayer.create(this, R.raw.meow1),
                 MediaPlayer.create(this, R.raw.meow2),
-                MediaPlayer.create(this, R.raw.meow3)
+                MediaPlayer.create(this, R.raw.meow3),
+                MediaPlayer.create(this, R.raw.meow4),
+                MediaPlayer.create(this, R.raw.meow5),
         };
 
         final MediaPlayer[] purrMP = {
@@ -126,9 +128,16 @@ public class MainScreen extends AppCompatActivity {
                 MediaPlayer.create(this, R.raw.dingle3)
         };
 
+        final MediaPlayer[] sniffMP = {
+                MediaPlayer.create(this, R.raw.sniff1),
+                MediaPlayer.create(this, R.raw.sniff2),
+                MediaPlayer.create(this, R.raw.sniff3)
+        };
+
         Button meow = (Button) this.findViewById(R.id.meow);
         Button purr = (Button) this.findViewById(R.id.purr);
         Button dingle = (Button) this.findViewById(R.id.dingle);
+        Button sniff = (Button) this.findViewById(R.id.sniff);
 
         meow.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -148,6 +157,13 @@ public class MainScreen extends AppCompatActivity {
             public void onClick(View v) {
                 Random random = new Random();
                 dingleMP[random.nextInt(dingleMP.length)].start();
+            }
+        });
+
+        sniff.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Random random = new Random();
+                sniffMP[random.nextInt(sniffMP.length)].start();
             }
         });
 

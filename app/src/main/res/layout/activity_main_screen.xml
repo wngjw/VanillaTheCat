@@ -49,7 +49,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="-20dp"
+            android:layout_marginTop="-60dp"
             android:background="@android:color/white"
             android:textColor="#000000"
             android:soundEffectsEnabled="false"
@@ -60,7 +60,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="60dp"
+            android:layout_marginTop="20dp"
             android:background="@android:color/white"
             android:textColor="#000000"
             android:soundEffectsEnabled="false"
@@ -71,11 +71,22 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="140dp"
+            android:layout_marginTop="100dp"
             android:background="@android:color/white"
             android:textColor="#000000"
             android:soundEffectsEnabled="false"
             android:id="@+id/dingle" />
+
+        <Button
+            android:text="Sniff"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="180dp"
+            android:background="@android:color/white"
+            android:textColor="#000000"
+            android:soundEffectsEnabled="false"
+            android:id="@+id/sniff" />
     </FrameLayout>
 
 </FrameLayout>
