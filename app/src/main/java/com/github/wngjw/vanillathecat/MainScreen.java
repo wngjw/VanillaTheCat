@@ -1,9 +1,11 @@
 package com.github.wngjw.vanillathecat;
 
 import android.annotation.SuppressLint;
+import android.content.DialogInterface;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.support.v7.app.ActionBar;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.os.Handler;
@@ -11,6 +13,8 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
 
 import com.google.android.gms.appindexing.Action;
 import com.google.android.gms.appindexing.AppIndex;
@@ -138,6 +142,7 @@ public class MainScreen extends AppCompatActivity {
         Button purr = (Button) this.findViewById(R.id.purr);
         Button dingle = (Button) this.findViewById(R.id.dingle);
         Button sniff = (Button) this.findViewById(R.id.sniff);
+        Button secretWeapon = (Button) this.findViewById(R.id.secretweapon);
 
         meow.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -183,10 +188,64 @@ public class MainScreen extends AppCompatActivity {
         // Upon interacting with UI controls, delay any scheduled hide()
         // operations to prevent the jarring behavior of controls going away
         // while interacting with the UI.
-        //findViewById(R.id.dummy_button).setOnTouchListener(mDelayHideTouchListener);
+        findViewById(R.id.secretweapon).setOnTouchListener(mDelayHideTouchListener);
+
         // ATTENTION: This was auto-generated to implement the App Indexing API.
         // See https://g.co/AppIndexing/AndroidStudio for more information.
         client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
+    }
+
+    public void showAlert(final View v) {
+        AlertDialog.Builder myAlert = new AlertDialog.Builder(this);
+        myAlert.setMessage("With great power comes great responsibility.")
+                .setPositiveButton("Proceed", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                        showDialog(v);
+                    }
+                })
+                .setNegativeButton("Turn back", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                })
+                .create();
+        myAlert.setCancelable(false);
+        myAlert.show();
+    }
+
+    public void showDialog(final View v) {
+        final MediaPlayer canMP = MediaPlayer.create(this, R.raw.can);
+        AlertDialog.Builder myAlert = new AlertDialog.Builder(this);
+        myAlert.setMessage("Reiterate to me, word for word, what I have just taught you.");
+        final EditText userInput = new EditText(this);
+        myAlert.setCancelable(true)
+                .setView(userInput)
+                .setPositiveButton("Proceed", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        if (userInput.getText().toString().equals("With great power comes great responsibility.")) {
+                            dialog.dismiss();
+                            canMP.start();
+                        } else {
+                            showFailToast(v);
+                        }
+                    }
+                })
+                .setNegativeButton("Turn back", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+        myAlert.setCancelable(false);
+        myAlert.show();
+    }
+
+    public void showFailToast(View v) {
+        Toast.makeText(this, "You have failed to learn anything.", Toast.LENGTH_LONG).show();
     }
 
     @Override
