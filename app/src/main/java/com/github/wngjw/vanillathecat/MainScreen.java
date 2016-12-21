@@ -142,7 +142,6 @@ public class MainScreen extends AppCompatActivity {
         Button purr = (Button) this.findViewById(R.id.purr);
         Button dingle = (Button) this.findViewById(R.id.dingle);
         Button sniff = (Button) this.findViewById(R.id.sniff);
-        Button secretWeapon = (Button) this.findViewById(R.id.secretweapon);
 
         meow.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -198,6 +197,7 @@ public class MainScreen extends AppCompatActivity {
     public void showAlert(final View v) {
         AlertDialog.Builder myAlert = new AlertDialog.Builder(this);
         myAlert.setMessage("With great power comes great responsibility.")
+                .setTitle("Notice")
                 .setPositiveButton("Proceed", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
@@ -219,7 +219,7 @@ public class MainScreen extends AppCompatActivity {
     public void showDialog(final View v) {
         final MediaPlayer canMP = MediaPlayer.create(this, R.raw.can);
         AlertDialog.Builder myAlert = new AlertDialog.Builder(this);
-        myAlert.setMessage("Reiterate to me, word for word, what I have just taught you.");
+        myAlert.setMessage("Reiterate to me what I have just taught you.");
         final EditText userInput = new EditText(this);
         myAlert.setCancelable(true)
                 .setView(userInput)
